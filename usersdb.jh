@@ -1,0 +1,35 @@
+entity User {
+	id Long,
+    firebaseId Long,
+    civility Civility,
+    firstName String,
+    lastName String,
+    birthDate Date,
+    country String,
+    language String,
+    mobileNumber String,
+    installation Installation
+}
+
+entity Installation {
+	id Long,
+    deviceId String,
+    deviceToken String,
+    locale Locale
+}
+enum Civility {
+ M, MRS, MS
+}
+
+relationship OneToOne {
+	User{installation} to Installation
+}
+
+paginate User with pagination
+
+dto * with mapstruct
+
+// Set service options to all except few
+service all with serviceImpl except Employee, Job
+// Set an angular suffix
+angularSuffix * with mySuffix
